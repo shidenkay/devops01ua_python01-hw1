@@ -44,7 +44,7 @@ def get_user_input_operation():
         except ValueError:
             print("Invalid input, please enter a number!")
 
-#Define the calculation function, this is main function that call other functions
+#Define the calculation function
 def calculator():
     first_num      = get_user_input_numbers("first")
     second_num     = get_user_input_numbers("second")
@@ -58,6 +58,21 @@ def calculator():
     except ZeroDivisionError:
         print("Cannot divide by zero!")
 
+#Define function to continue calculating
+def continue_calculating():
+    while True:
+        calculator()
+        while True:
+            continue_calculating = input("\nWould you like to perform another operation? Enter 'yes' or 'no': ")
+            if continue_calculating.lower() in ['yes', 'no']:
+                break
+            print("Invalid input. Please enter 'yes' or 'no'.")
+        
+        if continue_calculating.lower() == 'no':
+            print("Thank you for using the calculator. Goodbye!")
+            break
+
+
 #Call the main function
 print("Welcome to the Calculator Program!\n")
-calculator()
+continue_calculating()
